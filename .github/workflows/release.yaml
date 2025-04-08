@@ -49,7 +49,7 @@ jobs:
     if: ${{ contains(needs.release.outputs.publishedPackages, '"name":"@cherry-markdown/client"') }}
     uses: ./.github/workflows/release-client-build.yaml
     with:
-      client_version: ${{ needs.release.outputs.publishedClientVersion }}
+      client_version: ${{ needs.release.outputs.clientVersion }}
 
   build-vscodePlugin-release:
     needs: release
