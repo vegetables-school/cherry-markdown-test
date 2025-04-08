@@ -27,7 +27,7 @@ jobs:
           commit: "chore: release"
           publish: yarn changeset tag
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
 
       - name: Version Output
         id: extract_version
