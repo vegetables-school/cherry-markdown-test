@@ -76,7 +76,7 @@ jobs:
           files: |
             packages/client/src-tauri/target/x86_64-apple-darwin/release/bundle/dmg/*.dmg
           release-tag: "@cherry-markdown/client@${{ inputs.client_version }}"
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.BOT_TOKEN }}
 
       - name: Upload Linux Release Asset
         if: matrix.platform == 'ubuntu-latest'
@@ -87,7 +87,7 @@ jobs:
             packages/client/src-tauri/target/release/bundle/rpm/*.rpm;
             packages/client/src-tauri/target/release/bundle/appimage/*.AppImage
           release-tag: "@cherry-markdown/client@${{ inputs.client_version }}"
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.BOT_TOKEN }}
 
       - name: Upload Windows Release Asset
         if: matrix.platform == 'windows-latest'
@@ -97,4 +97,4 @@ jobs:
             packages/client/src-tauri/target/release/bundle/msi/*.msi;
             packages/client/src-tauri/target/release/bundle/nsis/*.exe
           release-tag: "@cherry-markdown/client@${{ inputs.client_version }}"
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.BOT_TOKEN }}
