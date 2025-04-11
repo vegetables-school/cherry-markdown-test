@@ -13,7 +13,7 @@ jobs:
           node-version: 20
           always-auth: true
           registry-url: https://registry.npmjs.org/
-          token: ${{ secrets.NPM_TOKEN }} 
+          cache: 'yarn'
 
       - name: Install dependencies
         run: |
@@ -24,6 +24,7 @@ jobs:
         run: |
           cp README*.md packages/cherry-markdown/
           cd packages/cherry-markdown
+          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
