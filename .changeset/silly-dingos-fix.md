@@ -1,7 +1,7 @@
 ---
-'cherry-markdown': patch
-'cherry-markdown-vscode-plugin': patch
-'@cherry-markdown/client': patch
+'cherry-markdown-test': patch
+'cherry-markdown-test-vscode-plugin': patch
+'@cherry-markdown-test/client': patch
 ---
 
 ci: beautify release message
