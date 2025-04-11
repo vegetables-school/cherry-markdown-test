@@ -1,6 +1,6 @@
 ---
 'cherry-markdown-test': patch
-'cherry-markdown-test-vscode-plugin': patch
+'cherry-markdown-vscode-plugin': patch
 ---
 
 ci: beautify release message

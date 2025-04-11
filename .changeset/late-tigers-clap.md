@@ -1,6 +1,6 @@
 ---
 'cherry-markdown-test': minor
-'cherry-markdown-test-vscode-plugin': patch
+'cherry-markdown-vscode-plugin': patch
 ---
 
 feat: add changesets
