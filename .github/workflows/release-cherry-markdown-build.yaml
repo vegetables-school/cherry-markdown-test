@@ -11,7 +11,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          always-auth: true
           registry-url: https://registry.npmjs.org/
           cache: 'yarn'
 
@@ -20,11 +19,11 @@ jobs:
           yarn
           yarn build
 
-      - name: Publish cherry-markdown
+      - name: Copy README*.md
         run: |
           cp README*.md packages/cherry-markdown/
-          cd packages/cherry-markdown
-          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: './packages/cherry-markdown'
+          
