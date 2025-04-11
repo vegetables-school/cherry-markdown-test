@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3.0.5/schema.json",
-  "changelog": ["@cherry-markdown-test/changesets-changelog-github", {"repo": "vegetables-school/cherry-markdown-test-test"}],
+  "changelog": ["@cherry-markdown/changesets-changelog-github", {"repo": "vegetables-school/cherry-markdown-test"}],
   "commit": false,
   "fixed": [],
   "linked": [],
@@ -8,6 +8,6 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@cherry-markdown-test/*_demo"
+    "@cherry-markdown/*_demo"
   ]
 }
