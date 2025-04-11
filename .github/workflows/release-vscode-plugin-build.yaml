@@ -12,7 +12,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
 
       - name: Change Package Files
         run: |
