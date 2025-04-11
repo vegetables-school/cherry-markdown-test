@@ -1,5 +1,4 @@
 name: "Build Cherry Markdown Release"
-
 on:
   workflow_call:
 jobs:
@@ -12,8 +11,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
-          registry-url: "https://registry.npmjs.org"
-          token: ${{ secrets.NPM_TOKEN }}
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: |
@@ -23,9 +21,7 @@ jobs:
       - name: Publish cherry-markdown
         run: |
           cp README*.md packages/cherry-markdown/
-           
           cd packages/cherry-markdown
           npm publish --access public
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

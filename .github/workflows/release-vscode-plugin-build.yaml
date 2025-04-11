@@ -39,4 +39,4 @@ jobs:
           cd ./packages/vscodePlugin
               vsce publish
         env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          VSCE_TOKEN: ${{ secrets.VSCE_PAT }}
