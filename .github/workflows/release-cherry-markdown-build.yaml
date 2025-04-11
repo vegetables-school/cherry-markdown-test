@@ -1,6 +1,9 @@
-name: "Build Cherry Markdown Release"
+name: Release
+
 on:
-  workflow_call:
+  push:
+    branches:
+      - main
 jobs:
   release-cherry-markdown-build:
     runs-on: ubuntu-latest
