@@ -18,13 +18,13 @@ jobs:
         run: |
 
           jq '."scripts"."build" = "yarn workspace cherry-markdown-core build"' package.json > temp.json && mv temp.json package.json
-          jq '."scripts"."build:vscodePlugin" = "yarn workspace cherry-markdown build"' package.json > temp.json && mv temp.json package.json
+          jq '."scripts"."build:vscodePlugin" = "yarn workspace cherry-markdown-test build"' package.json > temp.json && mv temp.json package.json
 
           cd packages/cherry-markdown
           jq '.name = "cherry-markdown-core"' package.json > temp.json && mv temp.json package.json
 
           cd ../vscodePlugin
-          jq '.name = "cherry-markdown"' package.json > temp.json && mv temp.json package.json
+          jq '.name = "cherry-markdown-test"' package.json > temp.json && mv temp.json package.json
   
 
       - name: Build VSCode Plugin
@@ -33,3 +33,10 @@ jobs:
           yarn --network-timeout 100000
           yarn build
           yarn build:vscodePlugin
+
+      - name: Publish VSCode Plugin
+        run: |
+          cd ./packages/vscodePlugin
+              vsce publish
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}

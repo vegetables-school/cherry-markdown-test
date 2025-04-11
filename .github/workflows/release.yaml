@@ -33,21 +33,11 @@ jobs:
         id: extract_version
         run: |
           echo "publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}"
-
-          clientVersion=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | select(.name=="@cherry-markdown/client") | .version')
-          echo "clientVersion=$clientVersion" >> $GITHUB_OUTPUT
  
   build-core-release:
     needs: release
-    if: ${{ contains(needs.release.outputs.publishedPackages, '"name":"cherry-markdown"') }}
+    if: ${{ contains(needs.release.outputs.publishedPackages, '"name":"cherry-markdown-test"') }}
     uses: ./.github/workflows/release-cherry-markdown-build.yaml
-
-  build-client-release:
-    needs: release
-    if: ${{ contains(needs.release.outputs.publishedPackages, '"name":"@cherry-markdown/client"') }}
-    uses: ./.github/workflows/release-client-build.yaml
-    with:
-      client_version: ${{ needs.release.outputs.publishedClientVersion }}
 
   build-vscodePlugin-release:
     needs: release
