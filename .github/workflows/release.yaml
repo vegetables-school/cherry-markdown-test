@@ -43,8 +43,10 @@ jobs:
     needs: release
     if: ${{ contains(needs.release.outputs.publishedPackages, '"name":"cherry-markdown-test"') }}
     uses: ./.github/workflows/release-cherry-markdown-build.yaml
+    secrets: inherit
 
   build-vscodePlugin-release:
     needs: release
     if: ${{ contains(needs.release.outputs.publishedPackages, '"name":"cherry-markdown-vscode-plugin"') }}
     uses: ./.github/workflows/release-vscode-plugin-build.yaml
+    secrets: inherit
