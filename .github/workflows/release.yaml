@@ -1,52 +1,52 @@
-name: Release
+# name: Release
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  release:
-    runs-on: ubuntu-latest
-    outputs:
-      publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}
-      publishedClientVersion: ${{ steps.extract_version.outputs.clientVersion }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org/
+# jobs:
+#   release:
+#     runs-on: ubuntu-latest
+#     outputs:
+#       publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}
+#       publishedClientVersion: ${{ steps.extract_version.outputs.clientVersion }}
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Setup Node.js 20.x
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 20
+#           registry-url: https://registry.npmjs.org/
 
-      - name: Install dependencies
-        run: |
-          yarn
+#       - name: Install dependencies
+#         run: |
+#           yarn
 
-      - name: Check for changesets
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          version: yarn changeset-version
-          title: "chore: release"
-          commit: "chore: release"
-          publish: yarn changeset tag
-        env:
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+#       - name: Check for changesets
+#         id: changesets
+#         uses: changesets/action@v1
+#         with:
+#           version: yarn changeset-version
+#           title: "chore: release"
+#           commit: "chore: release"
+#           publish: yarn changeset tag
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
 
-      - name: Version Output
-        id: extract_version
-        run: |
-          echo "publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}"
+#       - name: Version Output
+#         id: extract_version
+#         run: |
+#           echo "publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}"
  
-  build-core-release:
-    needs: release
-    if: ${{ contains(needs.release.outputs.publishedPackages, '"name":"cherry-markdown-test"') }}
-    uses: ./.github/workflows/release-cherry-markdown-build.yaml
-    secrets: inherit
+#   build-core-release:
+#     needs: release
+#     if: ${{ contains(needs.release.outputs.publishedPackages, '"name":"cherry-markdown-test"') }}
+#     uses: ./.github/workflows/release-cherry-markdown-build.yaml
+#     secrets: inherit
 
-  build-vscodePlugin-release:
-    needs: release
-    if: ${{ contains(needs.release.outputs.publishedPackages, '"name":"cherry-markdown-vscode-plugin"') }}
-    uses: ./.github/workflows/release-vscode-plugin-build.yaml
-    secrets: inherit
+#   build-vscodePlugin-release:
+#     needs: release
+#     if: ${{ contains(needs.release.outputs.publishedPackages, '"name":"cherry-markdown-vscode-plugin"') }}
+#     uses: ./.github/workflows/release-vscode-plugin-build.yaml
+#     secrets: inherit
