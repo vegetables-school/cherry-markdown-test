@@ -20,7 +20,7 @@ jobs:
         run: |
 
           jq '."scripts"."build" = "yarn workspace cherry-markdown-core build"' package.json > temp.json && mv temp.json package.json
-          jq '."scripts"."build:vscodePlugin" = "yarn workspace cherry-markdown-test build"' package.json > temp.json && mv temp.json package.json
+          jq '."scripts"."build:vscodePlugin" = "yarn workspace cherry-markdown-test-1 build"' package.json > temp.json && mv temp.json package.json
 
           cd packages/cherry-markdown
           jq '.name = "cherry-markdown-core"' package.json > temp.json && mv temp.json package.json
@@ -41,4 +41,5 @@ jobs:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
         run: |
           cd ./packages/vscodePlugin
-          vsce publish --no-dependencies --no-yarn -p $VSCE_PAT
+          vsce publish -p $VSCE_PAT
+        # vsce publish --no-dependencies --no-yarn -p $VSCE_PAT
