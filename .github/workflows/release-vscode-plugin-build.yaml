@@ -26,7 +26,7 @@ jobs:
           jq '.name = "cherry-markdown-core"' package.json > temp.json && mv temp.json package.json
 
           cd ../vscodePlugin
-          jq '.name = "cherry-markdown-test"' package.json > temp.json && mv temp.json package.json
+          jq '.name = "cherry-markdown-test-1"' package.json > temp.json && mv temp.json package.json
   
 
       - name: Install and Build Dependencies
