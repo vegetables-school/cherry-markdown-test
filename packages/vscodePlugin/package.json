@@ -16,6 +16,12 @@
     "type": "git",
     "url": "https://github.com/Tencent/cherry-markdown.git"
   },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "package.json"
+  ],
   "homepage": "https://github.com/Tencent/cherry-markdown",
   "engines": {
     "vscode": "^1.73.0"
