@@ -11,3 +11,5 @@ vsc-extension-quickstart.md
 **/*.ts
 
 web-resources/scripts/global-vars.js
+
+.changeset/**
